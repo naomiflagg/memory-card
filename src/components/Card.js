@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 const Card = (props) => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
-    debugger;
     props.checkClicked(clicked)
     if (clicked === false) {
       setClicked(true);
