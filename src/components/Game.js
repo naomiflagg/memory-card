@@ -1,155 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
-import Card from './Card';
+import cards from './cards';
 import uniqid from 'uniqid';
+import './game.css';
 
 const Game = () => {
-  const [bestScore, incrementBestScore] = useState(0);
-  const [currentScore, incrementCurrentScore] = useState(0);
-
-  useEffect(() => {
-    if (bestScore < currentScore) {
-      incrementBestScore(bestScore + 1);
-    }
-  }, [currentScore, bestScore]);
-
-  const handleClick = (clicked) => {
-    if (clicked === false) {
-      //clicked not working
-      //shuffle not rendering though array is resorting
-      incrementCurrentScore(currentScore + 1);
-    } else {
-      console.log('game over');
-    }
-  };
-
-  const [cards, setCards] = useState([
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'asdfasd'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'square'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'box'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'map'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'bean'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tdagdri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'triangel'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'trbbbi'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'trdgaei'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tritto'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'tri'
-    },
-    {
-      checkClicked: handleClick,
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-      text: 'trtoiei'
-    }
-  ]);
-
+  const [currentScore, setCurrentScore] = useState(0);
   useEffect(() => {
     for (let i = cards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [cards[i], cards[j]] = [cards[j], cards[i]];
     }
-    setCards(cards);
-  },[currentScore, cards]);
+  }, [currentScore]);
 
-  const CreateCards = () =>
-    cards.map((card) => (
-      <Card
-        key={uniqid()}
-        imageUrl={card.imageUrl}
-        text={card.text}
-        checkClicked={card.checkClicked}
-      />
-    ));
+  const [bestScore, setBestScore] = useState(0);
+  useEffect(() => {
+    console.log('Best score updating');
+    if (bestScore < currentScore) {
+      setBestScore(bestScore + 1);
+    }
+  }, [currentScore, bestScore]);
 
-  // forEach((card) => {
-  //   card.checkClicked = handleClick;
-  // });
+  const handleClick = (e) => {
+    let targetCard;
+    cards.forEach((card) => {
+      if (card.text === e.target.nextElementSibling.textContent) {
+        targetCard = card;
+      }
+    });
+    if (targetCard.clicked === false) {
+      setCurrentScore((currentScore) => currentScore + 1);
+      targetCard.clicked = true;
+    } else {
+      alert('Game over!');
+      setCurrentScore(0);
+      resetCards();
+    }
+  };
+
+  const resetCards = () => {
+    cards.forEach((card) => {
+      card.clicked = false;
+    });
+  };
 
   return (
     <div>
       <Scoreboard score={currentScore} bestScore={bestScore} />
-      <section className="cards">
-        <CreateCards />
-      </section>
+      <ul className="cards">
+        {cards.map((card) => (
+          <li key={uniqid()} >
+            <figure onClick={handleClick}>
+              <img src={card.imageUrl} alt="" />
+              <figcaption>{card.text}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

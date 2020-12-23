@@ -1,0 +1,23 @@
+.scoreboard {
+  display: flex;
+  justify-content: center;
+}
+
+.scoreboard p {
+  margin: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+}
+
+.cards li {
+  display: grid;
+  justify-content: center;
+}
+
+figcaption {
+  text-align: center;
+}
