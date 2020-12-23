@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import cards from './cards';
 import uniqid from 'uniqid';
-import './game.css';
 
 const Game = () => {
   const [currentScore, setCurrentScore] = useState(0);
@@ -25,7 +24,7 @@ const Game = () => {
     try {
       let targetCard = await findCard(e);
       if (targetCard.clicked === false) {
-        setCurrentScore((currentScore) => currentScore + 1);
+        setCurrentScore(currentScore + 1);
         targetCard.clicked = true;
       } else {
         gameOver();
@@ -37,12 +36,11 @@ const Game = () => {
   }
 
   const findCard = (e) => {
-    debugger;
     for (const card of cards) {
       if (card.alt === e.target.alt) {
         return card;
       }
-    };
+    }
   };
 
   const gameOver = () => {
