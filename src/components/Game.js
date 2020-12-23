@@ -14,7 +14,6 @@ const Game = () => {
 
   const [bestScore, setBestScore] = useState(0);
   useEffect(() => {
-    console.log('Best score updating');
     if (bestScore < currentScore) {
       setBestScore(bestScore + 1);
     }
