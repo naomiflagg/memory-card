@@ -1,99 +1,100 @@
+import banana from '../images/banana.gif';
+import burger from '../images/burger.jpg';
+import cheese from '../images/cheese.png';
+import donut from '../images/donut.png';
+import drumstick from '../images/drumstick.png';
+import eggs from '../images/eggs.png';
+import fries from '../images/fries.png';
+import hotdog from '../images/hotdog.png';
+import kiwi from '../images/kiwi.png';
+import pancakes from '../images/pancakes.jpg';
+import pizza from '../images/pizza.gif';
+import rice from '../images/rice.png';
+import strawberries from '../images/strawberries.gif';
+import sub from '../images/sub.jpg';
+import taco from '../images/taco.png';
+import tomato from '../images/tomato.png';
+
 const cards = [
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tri'
+    imageUrl: banana,
+    alt: 'banana'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'asdfasd'
+    imageUrl: burger,
+    alt: 'burger'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'square'
+    imageUrl: cheese,
+    alt: 'cheese'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tri'
+    imageUrl: donut,
+    alt: 'donut'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tri'
+    imageUrl: drumstick,
+    alt: 'drumstick'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'box'
+    imageUrl: eggs,
+    alt: 'eggs'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'map'
+    imageUrl: fries,
+    alt: 'fries'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'bean'
+    imageUrl: hotdog,
+    alt: 'hotdog'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tdagdri'
+    imageUrl: kiwi,
+    alt: 'kiwi'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'triangel'
+    imageUrl: pancakes,
+    alt: 'pancakes'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tri'
+    imageUrl: pizza,
+    alt: 'pizza'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'trbbbi'
+    imageUrl: rice,
+    alt: 'rice'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'trdgaei'
+    imageUrl: strawberries,
+    alt: 'strawberries'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tritto'
+    imageUrl: sub,
+    alt: 'sub'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'tri'
+    imageUrl: taco,
+    alt: 'taco'
   },
   {
     clicked: false,
-    imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Regular_triangle.svg/220px-Regular_triangle.svg.png',
-    text: 'trtoiei'
+    imageUrl: tomato,
+    alt: 'tomato'
   }
 ];
 

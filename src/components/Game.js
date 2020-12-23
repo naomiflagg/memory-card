@@ -21,21 +21,34 @@ const Game = () => {
     }
   }, [currentScore, bestScore]);
 
-  const handleClick = (e) => {
-    let targetCard;
-    cards.forEach((card) => {
-      if (card.text === e.target.nextElementSibling.textContent) {
-        targetCard = card;
+  async function handleClick(e) {
+    try {
+      let targetCard = await findCard(e);
+      if (targetCard.clicked === false) {
+        setCurrentScore((currentScore) => currentScore + 1);
+        targetCard.clicked = true;
+      } else {
+        gameOver();
       }
-    });
-    if (targetCard.clicked === false) {
-      setCurrentScore((currentScore) => currentScore + 1);
-      targetCard.clicked = true;
-    } else {
-      alert('Game over!');
-      setCurrentScore(0);
-      resetCards();
+    } catch (error) {
+      alert('Oops, something went wrong.');
+      console.log(error);
     }
+  }
+
+  const findCard = (e) => {
+    debugger;
+    for (const card of cards) {
+      if (card.alt === e.target.alt) {
+        return card;
+      }
+    };
+  };
+
+  const gameOver = () => {
+    alert('Game over!');
+    setCurrentScore(0);
+    resetCards();
   };
 
   const resetCards = () => {
@@ -49,11 +62,8 @@ const Game = () => {
       <Scoreboard score={currentScore} bestScore={bestScore} />
       <ul className="cards">
         {cards.map((card) => (
-          <li key={uniqid()} >
-            <figure onClick={handleClick}>
-              <img src={card.imageUrl} alt="" />
-              <figcaption>{card.text}</figcaption>
-            </figure>
+          <li key={uniqid()}>
+            <img src={card.imageUrl} alt={card.alt} onClick={handleClick} />
           </li>
         ))}
       </ul>

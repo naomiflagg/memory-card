@@ -4,20 +4,27 @@
 }
 
 .scoreboard p {
-  margin: 40px;
+  margin: 30px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   list-style-type: none;
 }
 
-.cards li {
-  display: grid;
-  justify-content: center;
+@media (min-width: 790px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
-figcaption {
-  text-align: center;
+.cards li {
+  margin: 20px auto;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
 }
